@@ -22,16 +22,16 @@
   <div id="navList" :class="{change: showNav }">
     <ul>
       <li v-show="showNav">
-        <a href="#AboutMe">About Me</a>
+        <a href="/#AboutMe" @click="closeNavbar">About Me</a>
       </li>
       <li v-show="showNav">
         <router-link to="projects">Projects</router-link>
       </li>
       <li v-show="showNav">
-        <router-link to="exprience">Experience</router-link> 
+        <router-link to="experience">Experience</router-link> 
       </li>
       <li v-show="showNav">
-        <a href="documents/resume.pdf">Résumé</a> 
+        <a href="documents/resume.pdf" target="_blank">Résumé</a> 
       </li>
       <li v-show="showNav">
         <router-link to="renders">3D Renders</router-link> 
@@ -51,6 +51,9 @@ export default {
   methods: {
       toggleHamburger() {
           this.showNav = !this.showNav;
+      },
+      closeNavbar() {
+        this.showNav = false;
       }
   },
   data: () => {

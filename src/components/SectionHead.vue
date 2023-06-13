@@ -26,15 +26,13 @@ export default {
     --size: max(5rem, 50px);
 
     font-size: var(--size);
-    margin-top: var(--size);
-    padding-top: var(--size);
     padding-bottom: var(--size);
     font-weight: 400;
-    
+    /* background: red; */
   }
 
 .sectionHead .backgroundElements {
-  bottom: 25%;
+  bottom: 37.5%;
 }
 
 .sectionHead svg {

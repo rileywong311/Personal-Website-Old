@@ -28,12 +28,15 @@
   <SectionHead id="Pages">
     Pages
   </SectionHead>
+
+  <!-- <div style="margin-top: 10rem"></div> -->
+
   <section class="pages">
-    <PageCard page="Projects" source="projects" image="ProjectImage.png" />
+    <PageCard page="Projects" source="projects" image="ProjectsImage.jpg" />
     <PageCard page="Experience" source="experience" image="ExperienceImage.jpg" />
     <PageCard page="Résumé" source="documents/resume.pdf" :direct="true" image="ResumeImage.png" />
-    <PageCard page="3D Renders" source="renders" image="RendersImage.png" />
-    <PageCard page="Photos" source="photos" image="AboutMePic.jpg" />
+    <PageCard page="3D Renders" source="renders" image="RendersImage.jpg" />
+    <PageCard page="Photos" source="photos" image="PhotosImage.jpg" />
   </section>
 
   <!-- <SectionHead  id="AboutMe" style="background-color: var(--gray); z-index: -2;"> -->
@@ -42,7 +45,7 @@
   </SectionHead>
   <section class="aboutMe">
     <div class="pic">
-      <img src="@\assets\AboutMePic.jpg" alt="Profile Image"/>
+      <img src="@\assets\AboutMeImage.jpg" alt="Profile Image"/>
     </div>
     <p class="class">
       Santa Clara University, Class of 2026 
@@ -102,7 +105,7 @@ import SectionHead from '@/components/SectionHead.vue';
 import PageCard from '@/components/PageCard.vue';
 
 export default {
-  name: 'App',
+  name: 'HomePage',
   components: {
     MainNavbar, 
     LogosBar,
@@ -189,21 +192,6 @@ export default {
   height: calc(var(--grid-size) * 2.175);
 }
 
-.welcome {
-  background: var(--gray);
-  height: auto;
-  width: auto;
-
-  margin-top: 8rem;
-  padding: 2rem;
-  font-size: 3rem;
-  color: var(--blue);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 @media screen and (max-width: 1200px) {
   .title {
     --grid-size: 300px;
@@ -263,30 +251,32 @@ export default {
         Pages
    =============== */
 
+.welcome {
+  background: var(--gray);
+  height: auto;
+  width: auto;
+
+  margin: 8rem auto 8rem;
+  padding: 2rem;
+  font-size: 3rem;
+  color: var(--blue);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .pages {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  column-gap: 3rem;
-  row-gap: 4.25rem;
+  column-gap: 2.5rem;
+  row-gap: max(2.5rem, 40px);
 
   position: relative;
   max-width: 75%;
-  margin: auto;
-}
- 
-.pages img {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(3px 5px 2px rgba(0, 0, 0, 0.25));
-  object-fit: cover;
-  transition: 1s;
-}
-
-.pages img:hover {
-  transform: scale(1.05);
+  margin: auto auto 8rem;
 }
 
 
@@ -333,6 +323,7 @@ export default {
   width: 100%;
   height: 100%;
   transition: 0.6s ease-in-out;
+  object-fit: cover;
 }
 
 /* .aboutMe img:hover {
@@ -356,6 +347,7 @@ export default {
   padding-top: 0rem;
   font-size: 1.5rem;
   line-height: 1.8;
+  margin-bottom: 8rem;
 }
 
 @media screen and (max-width: 500px) {

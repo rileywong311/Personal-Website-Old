@@ -1,29 +1,31 @@
 <template>
-  <div v-if="direct" class="card">
-    <a :href="source">
+  <a v-if="direct" :href="source">
+    <div class="card"
+      @mouseover="hover = true"
+      @mouseleave="hover = false"
+      >
       <div class="preview">
-        <img :src="require(`../assets/${image}`)"/>
+        <img :src="require(`../assets/${image}`)" :class="{hover: hover}"/>
       </div>
-    </a>
-    <a :href="source">
       <div class="pageLink">
         {{ page }}
       </div>
-    </a>
-  </div>
+    </div>
+  </a>
 
-  <div v-else class="card">
-    <router-link :to="source">
-      <div class="preview">
-        <img :src="require(`../assets/${image}`)"/>
-      </div>
-    </router-link>
-    <router-link :to="source">
-      <div class="pageLink">
-        {{ page }}
-      </div>
-    </router-link>
-  </div>
+  <router-link v-else :to="source">
+    <div class="card"
+      @mouseover="hover = true"
+      @mouseleave="hover = false"
+      >
+        <div class="preview">
+          <img :src="require(`../assets/${image}`)" :class="{hover: hover}"/>
+        </div>
+        <div class="pageLink">
+          {{ page }}
+        </div>
+    </div>
+  </router-link>
 </template>
 
 
@@ -35,6 +37,14 @@ export default {
     source: String,
     image: String,
     direct: Boolean
+  },
+  data: () => {
+    return {
+      hover: false
+    }
+  },
+  methods: {
+
   }
   }
 </script>
@@ -51,7 +61,9 @@ a {
 .card {
   display: grid;
   grid-template-rows: auto;
-  gap: 2rem;
+  background-color: var(--gray);
+  padding: max(1rem, 10px);
+  gap: max(2.5rem, 30px);
 }
 
 .preview {
@@ -65,45 +77,32 @@ a {
   width: calc(var(--size) * 1);
   height: calc(var(--size) * 0.65);
   overflow: hidden;
-  border: 5px solid var(--gray);
-  /* box-shadow: 3px 5px 2px rgba(0, 0, 0, 0.25); */
 }
 
 img {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(3px 5px 2px rgba(0, 0, 0, 0.25));
   object-fit: cover;
-  transition: 0.5s;
+  transition: ease-in-out 2s;
+}
+
+img.hover {
+  transform: scale(1.1);
 }
 
 .pageLink {
   grid-row: 2;
   /* overflow: hidden; */
   transition: 0.5s;
-  background: linear-gradient(to left, white 50%, var(--gray) 50%) right;
-  background-size: 200% 100%;
-
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 17.5px;
-  border-color: var(--blue);
 
   width: 15rem;
   min-width: 225px;
   height: 50px;
   margin: auto;
 
-  display: grid;
   align-content: center;
   text-align: center;
-  font-size: 25px;
+  font-size: 28px;
   font-weight: 300;
 }
-
-.pageLink:hover {
-  background-position: left;
-  cursor: pointer;
-}
-
 </style>
